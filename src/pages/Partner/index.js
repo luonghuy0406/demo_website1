@@ -55,7 +55,7 @@ const useStyles = makeStyles((props) => ({
   },
   boxContent: {
     height: "400px",
-    backgroundColor: "#f5f5f5",
+    // backgroundColor: "#f5f5f5",
     color: "var(--primary-color)",
     display: "flex",
     alignItems: "center",
@@ -63,18 +63,10 @@ const useStyles = makeStyles((props) => ({
     flexDirection: "column",
     transition: "all .2s linear",
   },
-  boxImage: {
-    width: "100%",
-    height: 400,
-
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "200%",
-    transition: "background-size .3s linear",
-  },
   content: {
     fontFamily: "var(--font-family) !important",
-    textAlign: "center",
+    textAlign: "justify",
+    padding:" 16px 0 !important",
     "@media (max-width:600px)": {
       fontSize: "15px !important",
     },
@@ -92,8 +84,8 @@ const useStyles = makeStyles((props) => ({
   },
   card: {
     borderRadius: "0 !important",
-    boxShadow: "0px 0px 1px 1px rgba(0,0,0,0.2) !important",
-    backgroundColor: "var(--background-gray) !important",
+    boxShadow: "unset !important",
+    // backgroundColor: "var(--background-gray) !important",
     color: "var(--primary-color) !important",
     transition: "all .2s linear !important",
     cursor: "pointer",
@@ -117,6 +109,8 @@ const useStyles = makeStyles((props) => ({
     // },
   },
   button: {
+    color:"var(--primary-color)",
+    textDecoration:"none",
     "&:hover": {
       color: "var(--secondary-color)",
     },
@@ -198,7 +192,8 @@ function Partner() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        background: "white",
+                        boxShadow: "inset 0px 0px 1px 1px rgba(0,0,0,0.2)  !important",
+                        backgroundColor: "#f8f8f8 !important"
                       }}
                     >
                       <img
@@ -221,9 +216,9 @@ function Partner() {
                       <Typography
                         component="span"
                         fontSize="14px"
-                        style={{ textDecoration: "underline" }}
+                        fontWeight="bold"
                       >
-                        <a href={item.link}>{t("Learn more")}</a>
+                        <a className={classes.button} href={item.link}>{t("VISIT WEBSITE")}</a>
                       </Typography>
                     </CardContent>
                   </Card>

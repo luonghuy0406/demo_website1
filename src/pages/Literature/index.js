@@ -163,6 +163,7 @@ const useStyles = makeStyles((props) => ({
     backgroundColor: "var(--primary-color) !important",
     fontWeight: "bold !important",
     padding: "10px 15px !important",
+    borderRadius:"50px !important",
     "&:hover": {
       backgroundColor: "var(--secondary-color) !important",
     },
@@ -273,7 +274,7 @@ const ChildLiterature = ({ ...props }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   return (
-    <Grid item xs={12} container >
+    <Grid item xs={12} container>
       <Grid item xs={12} sx={{backgroundColor:"var(--primary-color)",padding:"15px"}}>
         <Typography
           color={"white"}
@@ -285,7 +286,7 @@ const ChildLiterature = ({ ...props }) => {
       </Grid>
       {props.item.items.map((item) => {
         return (
-          <Grid item sx={{ p: 2 }} md={4} container>
+          <Grid item sx={{ px: 2, py:4 }} md={4} container>
             <Grid item xs={12} container>
               <Grid item xs={4}>
                 <Box
