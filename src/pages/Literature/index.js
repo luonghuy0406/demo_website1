@@ -1,201 +1,221 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
-import { Grid, Box, Container, Typography, useTheme } from "@mui/material";
-import cat_pumps from "../../assets/images/cat_pumps.png";
-import spir_star from "../../assets/images/spir_star.png";
-import techcal from "../../assets/images/techcal.png";
-import hydraulics_international from "../../assets/images/hydraulics_international.png";
-import graphic from "../../assets/images/graphic.png";
-import norriseal from "../../assets/images/norriseal.png";
-import taylor from "../../assets/images/taylor.png";
-import hidraulics from "../../assets/images/hidraulics.png";
-import white_cat_pumps from "../../assets/images/white_cat_pumps.png";
-import white_spir_star from "../../assets/images/white_spir_star.png";
-import white_techcal from "../../assets/images/white_techcal.png";
-import white_hydraulics_international from "../../assets/images/white_hydraulics_international.png";
-import white_graphic from "../../assets/images/white_graphic.png";
-import white_norriseal from "../../assets/images/white_norriseal.png";
-import white_taylor from "../../assets/images/white_taylor.png";
-import white_hidraulics from "../../assets/images/white_hidraulics.png";
+import {
+  Grid,
+  Container,
+  CardContent,
+  Card,
+  Typography,
+  useTheme,
+  Box,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material/styles";
 import { useInView } from "react-intersection-observer";
+import Button from "@mui/material/Button";
 
-export const arrBrand = {
-  cat_pumps: {
-    name: "Catpump",
-    logo: cat_pumps,
-    logo_white: white_cat_pumps,
-    description: "catpump_content",
-    products: [
+const data = {
+  catalogs: {
+    name: "Catalogs",
+    items: [
       {
-        name: "PLUNGER PUMP",
-        path: "/product/pump/plunger_pump",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
       {
-        name: "PISTON PUMP",
-        path: "/product/pump/piston_pump",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
       {
-        name: "SPECIAL PUMP",
-        path: "/product/pump/special_pump",
-      },
-    ],
-  },
-  spir_star: {
-    name: "SPIR STAR",
-    logo: spir_star,
-    logo_white: white_spir_star,
-    description: "spir_star_content",
-    products: [
-      {
-        name: "THERMOPLASTIC HIGH-PRESSURE HOSE",
-        path: "/product/thermoplastic_high_pressure_hoses/thermoplastic_high_pressure_hoses",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
     ],
   },
-  techcal: {
-    name: "TECHCAL",
-    logo: techcal,
-    logo_white: white_techcal,
-    description: "techcal_content",
-    products: [
+  brochures_market: {
+    name: "Brochures - By Market",
+    items: [
       {
-        name: "CHART RECORDER",
-        path: "/product/chart_recorder/chart_recorder",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
+      {
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
+      {
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
+      {
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
+      {
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
+      {
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
     ],
   },
-  hydraulics_international: {
-    name: "Hydraulics International, Inc. (HII)",
-    logo: hydraulics_international,
-    logo_white: white_hydraulics_international,
-    description: "hydraulics_international_content",
-    products: [
+  brochures_product: {
+    name: "Brochures - By Product",
+    items: [
       {
-        name: "AIR DRIVEN GAS BOOSTER",
-        path: "/product/pump/air_driven_gas_booters",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
       {
-        name: "AIR DRIVEN LIQUID PUMP",
-        path: "/product/pump/air_driven_liquid_pumps",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
       {
-        name: "AIR PRESSURE AMPLIFIER",
-        path: "/product/pump/air_pressure_amplifier",
-      },
-    ],
-  },
-  graphic: {
-    name: "Graphic Controls",
-    logo: graphic,
-    logo_white: white_graphic,
-    description: "graphic_content",
-    products: [
-      {
-        name: "CHART PAPER & PEN",
-        path: "/product/chart_paper_n_pen/chart_paper_n_pen",
-      },
-    ],
-  },
-  norriseal: {
-    name: "NORRISEAL",
-    logo: norriseal,
-    logo_white: white_norriseal,
-    description: "norriseal_content",
-    products: [
-      {
-        name: "BUTTERFLY VALVE",
-        path: "/product/valve_control/butterfly_valve",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
       {
-        name: "CONTROL VALVE",
-        path: "/product/valve_control/control_valve",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
       {
-        name: "LIQUID LEVEL CONTROLLER",
-        path: "/product/valve_control/liquid_level_controller",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
-    ],
-  },
-  taylor: {
-    name: "TAYLOR",
-    logo: taylor,
-    logo_white: white_taylor,
-    description: "taylor_content",
-    products: [
       {
-        name: "THERMOMETER",
-        path: "/product/thermometer/thermometer"
-      }
-    ],
-  },
-  hidraulics: {
-    name: "SUN HYDRAULICS",
-    logo: hidraulics,
-    logo_white: white_hidraulics,
-    description: "hidraulics_content",
-    products: [
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
       {
-        name: "COUNTERBALANCE CARTRIDGE VALVE",
-        path: "/product/valve_control/counterbalance_cartridge_valves",
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
+      },
+      {
+        name: "Pumps and Accessories Catalog",
+        img: "https://www.catpumps.com/sites/default/files/2021-07/99CAT001A-Pumps%20and%20Accessories%20Catalog.jpg",
+        link: "https://www.catpumps.com/dynamic-literature/pumps-and-accessories-catalog",
       },
     ],
   },
 };
 
-const useStyles = makeStyles(() => {
-  const theme = useTheme();
-  return {
-    container: {
-      width: "calc(100%)  !important",
-      marginLeft: "0 !important",
-    },
-    background: {
-      "&:hover": {
-        filter: "drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5))",
-        zIndex: "1",
-        backgroundColor: "var(--primary-color)",
-        transition: "background-color .2s linear !important",
-        "& img": {
-          [theme.breakpoints.down("sm")]: {
-            width: "75%",
-            transition: "width .3s linear !important",
-          },
-          [theme.breakpoints.up("md")]: {
-            width: "95%",
-            transition: "width .3s linear !important",
-          },
-        },
-      },
-    },
-  };
-});
+const useStyles = makeStyles((props) => ({
+  container: {
+    width: "calc(100%) !important",
+    marginLeft: "0 !important",
+  },
+  root: {
+    flexDirection: "column",
+  },
+  image: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+  },
+  boxContent: {
+    height: "400px",
+    backgroundColor: "#f5f5f5",
+    color: "var(--primary-color)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    transition: "all .2s linear",
+  },
+  boxImage: {
+    width: "100%",
+    height: 400,
 
-function Literature({ ...props }) {
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "200%",
+    transition: "background-size .3s linear",
+  },
+  content: {
+    fontFamily: "var(--font-family) !important",
+    textAlign: "center",
+    "@media (max-width:600px)": {
+      fontSize: "15px !important",
+    },
+    "@media (min-width:600px)": {
+      fontSize: "17px !important",
+    },
+  },
+  button: {
+    backgroundColor: "var(--primary-color) !important",
+    fontWeight: "bold !important",
+    padding: "10px 15px !important",
+    "&:hover": {
+      backgroundColor: "var(--secondary-color) !important",
+    },
+  },
+  card: {
+    borderRadius: "0 !important",
+    boxShadow: "0px 0px 1px 1px rgba(0,0,0,0.2) !important",
+    backgroundColor: "var(--background-gray) !important",
+    color: "var(--primary-color) !important",
+    transition: "all .2s linear !important",
+    cursor: "pointer",
+    // "&:hover": {
+    //   "& .card-content-hover": {
+    //     backgroundColor: "var(--primary-color) !important",
+    //     transition: "background-color .2s linear !important",
+    //   },
+    //   "& span": {
+    //     color: "var(--secondary-color) !important",
+    //     transition: "color .2s linear !important",
+    //   },
+    //   "& div": {
+    //     color: "white !important",
+    //     transition: "color .2s linear !important",
+    //   },
+    //   "& img": {
+    //     width: "85% !important",
+    //     transition: "width .3s linear !important",
+    //   },
+    // },
+  }
+}));
+
+function Literature() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const classes = useStyles();
   const { t } = useTranslation();
-  const { ref, inView, entry } = useInView({
+  const theme = useTheme();
+  const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
   });
-  let theme = createTheme();
-  theme = responsiveFontSizes(theme);
+
   useEffect(() => {
-    if (inView && !$("#brand_lb").hasClass("animate__fadeInLeft")) {
-      $("#brand_lb").addClass("animate__fadeInLeft");
+    if (inView && !$("#literature_page_lb").hasClass("animate__fadeInLeft")) {
+      $("#literature_page_lb").addClass("animate__fadeInLeft");
     }
-    if (inView && !$(".brand_content").hasClass("animate__fadeInRight")) {
-      $(".brand_content").addClass("animate__fadeInRight");
+    if (
+      inView &&
+      !$("#literature_page_content").hasClass("animate__fadeInRight")
+    ) {
+      $("#literature_page_content").addClass("animate__fadeInRight");
     }
   }, [inView]);
   return (
@@ -205,125 +225,41 @@ function Literature({ ...props }) {
       sx={{ padding: { xs: "15px 0", md: "30px 0" } }}
       ref={ref}
     >
-      <Container maxWidth="md" sx={{ p: 2 }}>
-        <Grid container spacing={2} classes={{ root: classes.container }}>
-          <Grid
-            item
-            id="brand_lb"
-            xs={12}
-            md={12}
-            sx={{ padding: "20px 0 !important", fontSize: "22px" }}
-            className={"animate__animated animate__delay-0.1s"}
+      <Container maxWidth="lg" sx={{ p: 2 }}>
+        <div
+          id="literature_page_lb"
+          style={{ display: "flex" }}
+          className={"animate__animated animate__delay-0.1s"}
+        >
+          <div
+            style={{
+              marginTop: "2px",
+              minWidth: "30px",
+              width: "30px",
+              height: "30px",
+              marginRight: "10px",
+              backgroundColor: "var(--secondary-color)",
+            }}
+          ></div>
+          <Typography
+            color={"var(--primary-color)"}
+            fontFamily={"var(--font-family-header)"}
+            variant="h4"
+            component="h4"
+            fontWeight="bolder"
           >
-            {props.home ? (
-              <>
-                <ThemeProvider theme={theme}>
-                  <Typography
-                    fontFamily={"var(--font-family-header)"}
-                    variant="h4"
-                    component="h4"
-                    sx={{ color: "var(--primary-color)" }}
-                    fontWeight="bolder"
-                  >
-                    {t("OUR BRAND")}
-                  </Typography>
-                </ThemeProvider>
-                <span className={"line-brand"}></span>
-              </>
-              
-            ) : (
-              <div style={{ display: "flex"}}>
-                <div
-                  style={{
-                    marginTop: "2px",
-                    minWidth: "30px",
-                    width: "30px",
-                    height: "30px",
-                    marginRight: "10px",
-                    backgroundColor: "var(--secondary-color)",
-                  }}
-                ></div>
-                <Typography
-                  fontFamily={"var(--font-family-header)"}
-                  variant="h4"
-                  component="h4"
-                  sx={{ color: "var(--primary-color)" }}
-                  fontWeight="bolder"
-                  // lineHeight={0}
-                >
-                  {t("OUR BRAND")}
-                </Typography>
-              </div>
-            )}
-          </Grid>
-          {Object.entries(arrBrand).map((brand, index) => {
-            return (
-              <Grid
-                className={
-                  "brand_content animate__animated animate__delay-0.1s"
-                }
-                key={"brand-" + brand[0]}
-                classes={{ root: classes.background }}
-                sx={{
-                  padding: { xs: "10px !important", md: "15px !important" },
-                  height: { xs: "160px !important", md: "180px !important" },
-                  backgroundColor: {
-                    md:
-                      [0, 2, 5, 7].indexOf(index) > -1
-                        ? "var(--gray-color)"
-                        : "white",
-                    xs:
-                      [0, 3, 4, 7].indexOf(index) > -1
-                        ? "var(--gray-color)"
-                        : "white",
-                  },
-                }}
-                item
-                xs={6}
-                md={3}
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                container
-                onMouseEnter={() => {
-                  document.getElementById("brand" + brand[0]).src =
-                    brand[1]["logo_white"];
-                }}
-                onMouseLeave={() => {
-                  document.getElementById("brand" + brand[0]).src =
-                    brand[1]["logo"];
-                }}
-              >
-                <Link
-                  to={"/brand/" + brand[0]}
-                  style={{ textDecoration: "none" }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  >
-                    <Box
-                      id={"brand" + brand[0]}
-                      component="img"
-                      sx={{
-                        width: { xs: "70%", md: "90%" },
-                        aspectRatio: " 3/2",
-                        objectFit: "contain",
-                        maxHeight: { xs: 233, md: 250 },
-                        maxWidth: { xs: "auto", md: "auto" },
-                      }}
-                      // alt="The house from the offer."
-                      src={brand[1].logo}
-                    />
-                  </div>
-                </Link>
-              </Grid>
-            );
+            {t("LITERATURE")}
+          </Typography>
+        </div>
+        <Grid
+          id="literature_page_content"
+          container
+          classes={{ root: classes.container }}
+          pt={5}
+          className={"animate__animated animate__delay"}
+        >
+          {Object.values(data).map((item, index) => {
+            return <ChildLiterature item={item} />;
           })}
         </Grid>
       </Container>
@@ -332,3 +268,54 @@ function Literature({ ...props }) {
 }
 
 export default Literature;
+
+const ChildLiterature = ({ ...props }) => {
+  const classes = useStyles();
+  const { t } = useTranslation();
+  return (
+    <Grid item xs={12} container >
+      <Grid item xs={12} sx={{backgroundColor:"var(--primary-color)",padding:"15px"}}>
+        <Typography
+          color={"white"}
+          fontFamily={"var(--font-family-header)"}
+          variant="h5"
+          component="h5"
+          fontWeight="bolder"
+        >{props.item.name}</Typography>
+      </Grid>
+      {props.item.items.map((item) => {
+        return (
+          <Grid item sx={{ p: 2 }} md={4} container>
+            <Grid item xs={12} container>
+              <Grid item xs={4}>
+                <Box
+                  component="img"
+                  sx={{
+                    height: "100px",
+                    width: "80px",
+                  }}
+                  alt={item.name}
+                  src={item.img}
+                />
+              </Grid>
+              <Grid item xs={8} container>
+                <Grid item xs={12}>
+                  <Typography
+                    color={"var(--primary-color)"}
+                    fontFamily={"var(--font-family-header)"}
+                    variant="h6"
+                    component="h6"
+                    fontWeight="bolder"
+                  ><a href={item.link} style={{color:"var(--primary-color)",textDecoration:"none"}}>{item.name}</a></Typography>
+                </Grid> 
+                <Grid item xs={12}>
+                  <Button  variant="contained" className={classes.button}>Download</Button>  
+                </Grid>  
+              </Grid>
+            </Grid>
+          </Grid>
+        );
+      })}
+    </Grid>
+  );
+};
