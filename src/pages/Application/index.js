@@ -169,7 +169,7 @@ function Application() {
   }, [inView]);
   return (
     <Grid item md={12}  sx={{ padding: { xs: "15px 0", md: "30px 0" } }}>
-      <Container maxWidth="md" sx={{ p: 2 }}>
+      <Container maxWidth="lg" sx={{ p: 2 }}>
         <Typography
           ref={ref}
           style={{ padding: theme.spacing(5), paddingTop: "0" }}
@@ -212,10 +212,10 @@ const ServiceContent = () => {
             xs={12}
             md={12}
             container
-            direction={index % 2 != 0 ? "row-reverse" : "row"}
+            // direction={index % 2 != 0 ? "row-reverse" : "row"}
             classes={{ root: classes.root }}
           >
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4}>
               <Box
                 className={classes.boxImage}
                 sx={{
@@ -223,7 +223,7 @@ const ServiceContent = () => {
                 }}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={8}>
               <Box className={classes.boxContent}>
                 <label className={classes.textLabel}>
                   <Typography

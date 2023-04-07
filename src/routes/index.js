@@ -1,8 +1,10 @@
 import AboutUs from '../pages/AboutUs';
 import Application from '../pages/Application';
 import Home from '../pages/Home';
+import Literature from '../pages/Literature';
 import LWW from '../pages/LWW';
 import NotFound from '../pages/NotFound';
+import Partner from '../pages/Partner';
 import Pump from '../pages/Pump';
 import ChildPump from '../pages/Pump/ChildPump';
 import PPE from '../pages/Robotics';
@@ -28,6 +30,8 @@ const publicRoutes = [
     {path:'/robotics',component:Robotics,label:"Robotics"},
     {path:'/ppe',component:PPE,label:"PPE"},
     {path:'/pump/:id',component:ChildPump},
+    {path:'/partner',component:Partner,label:"Partner"},
+    {path:'/literature',component:Literature,label:"Literature"},
     {path:'/404',component:NotFound,label:"404",layout:null},
     {path:'*',component:NotFound,layout:null},
 ]
