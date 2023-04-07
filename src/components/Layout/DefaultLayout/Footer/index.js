@@ -52,7 +52,7 @@ function Footer() {
               sx={{
                 width: { xs: "30%", md: "65%" },
               }}
-              src={logo}
+              src={'https://asiawaterjet.com/wp-content/uploads/2020/06/Logo-Retrace-01.png'}
             />
           </Grid>
           <Grid
@@ -88,7 +88,7 @@ function Footer() {
                 style={{ paddingLeft: "15px" }}
                 dangerouslySetInnerHTML={{
                   __html: t(
-                    "16 Yen The St, Ward 2, Tan Binh Dist., HCMC, Viet Nam"
+                    "16 - 18 Yen The St, Ward 2, Tan Binh Dist., HCMC, Viet Nam"
                   ),
                 }}
               ></label>
@@ -102,7 +102,7 @@ function Footer() {
               }}
             >
               <PhoneIcon style={{ marginBottom: "5px" }} />
-              <label style={{ paddingLeft: "15px" }}>+84 909 942 855</label>
+              <label style={{ paddingLeft: "15px" }}>+84 123 456 789</label>
             </label>
             <label
               style={{
@@ -113,7 +113,7 @@ function Footer() {
               }}
             >
               <EmailIcon style={{ marginBottom: "3px" }} />
-              <label style={{ paddingLeft: "15px" }}>info@pacificpsc.com</label>
+              <label style={{ paddingLeft: "15px" }}>info@email.com</label>
             </label>
           </Grid>
           <Grid
@@ -232,7 +232,7 @@ function Footer() {
             float: "right",
           }}
         >
-          ©2023 Pacific Pressure Systems and Components Co., Ltd (PPSC), All Rights Reserved.
+          ©2023 VNWaterjet Co., Ltd (VNWaterjet), All Rights Reserved.
         </label>
       </div>
     </div>

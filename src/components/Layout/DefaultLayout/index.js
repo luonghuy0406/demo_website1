@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '56px !important',
     },
     '@media (min-width:600px)': {
-      marginTop: '60px !important',
+      marginTop: '120px !important',
     },
   },
   buttonPulse :{

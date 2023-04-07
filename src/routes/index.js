@@ -1,31 +1,35 @@
 import AboutUs from '../pages/AboutUs';
-import Brand from '../pages/Brand';
-import ChildBrand from '../pages/Brand/ChildBrand';
+import Application from '../pages/Application';
 import Home from '../pages/Home';
+import LWW from '../pages/LWW';
 import NotFound from '../pages/NotFound';
-import Products from '../pages/Products';
-import ChildProduct from '../pages/Products/ChildProduct';
-import ListProducts from '../pages/Products/ListProduct';
-import Service from '../pages/Service';
-
+import Pump from '../pages/Pump';
+import ChildPump from '../pages/Pump/ChildPump';
+import PPE from '../pages/Robotics';
+import Robotics from '../pages/Robotics';
+const pages = [
+    "Home",
+    "About us",
+    "Line wire washing",
+    "Applycation",
+    "Pump",
+    "Robotics",
+    "PPE",
+    "Partner",
+    "Literature",
+  ];
 // public view
 const publicRoutes = [
     {path:'/',component:Home,label:"Home"},    
-    {path:'/about',component:AboutUs,label:"ABOUT US"},
-    {path:'/product',component:Products,label:"Product"},
-    {path:'/brand',component:Brand,label:"Brand"},
-    {path:'/business',component:Service,label:"Our business"},
-    {path:'/brand/:id',component:ChildBrand},
-    {path:'/product/:id',component:ListProducts},
-    // {path:'/product/pump/:id',component:ChildProduct},
-    {path:'/product/:id1/:id2',component:ChildProduct},
-    // {path:'/product/thermoplastic_high_pressure_hoses/:id',component:ChildProduct},
-    // {path:'/product/thermometer/:id',component:ChildProduct},
-    // {path:'/product/chart_recorder/:id',component:ChildProduct},
-    // {path:'/product/chart_paper_n_pen/:id',component:ChildProduct},
+    {path:'/about',component:AboutUs,label:"About us"},
+    {path:'/lww',component:LWW,label:"Line wire washing"},
+    {path:'/application',component:Application,label:"Application"},
+    {path:'/pump',component:Pump,label:"Pump"},
+    {path:'/robotics',component:Robotics,label:"Robotics"},
+    {path:'/ppe',component:PPE,label:"PPE"},
+    {path:'/pump/:id',component:ChildPump},
     {path:'/404',component:NotFound,label:"404",layout:null},
     {path:'*',component:NotFound,layout:null},
-    // {path:'/product',component:Products, layout: null,label:"Product"},
 ]
 
 //need to login
